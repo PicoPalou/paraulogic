@@ -13,14 +13,11 @@ La paraula del dia
 </div>
 
 <div class="title">
-    <input type="text" id="resposta"/>
-    <button type="submit" onclick="analitzarParaula()">Enviar</button>
+    <input type="text" id="resposta" maxlength="5" onkeydown="return event.key !== ' ';">
+    <button type="submit" id="enviar" onclick="analitzarParaula()">Enviar</button>
 </div>
 
-<div class="respostes" id="respostes">
-
-
-</div>
+<div class="respostes" id="respostes"></div>
 
 <div class="panel-title" id="pista" >Pista: Paraula de 5 lletres</div>
 </body>
