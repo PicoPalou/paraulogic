@@ -1,5 +1,6 @@
 const secreta = 'RADIO'
 let resuelto = false
+let intentos = 0
 /*
 Inicialitzam valors
  */
@@ -7,41 +8,38 @@ Inicialitzam valors
 function analitzarParaula() {
     let palabra = document.getElementById('resposta').value.toUpperCase();
     let colores = ""
-    console.log(palabra)
-    if (palabra.length === 5) {
-        if (palabra === secreta) {
-            document.getElementById('enviar').disabled=true
-            resuelto = true
-        }
-        else {
-            for (let i = 0; i < palabra.length; i++) {
-                console.log(palabra.charAt(i))
-                if (secreta.includes(palabra.charAt(i))) {
-                    if (palabra.charAt(i) === secreta.charAt(i)) {
-                        console.log("la letra esta en su sitio", palabra.charAt(i));
-                        colores += "2"
+    if (intentos < 5) {
+        if (palabra.length === 5) {
+            if (palabra === secreta) {
+                document.getElementById('enviar').disabled = true
+                resuelto = true
+            } else {
+                for (let i = 0; i < palabra.length; i++) {
+                    if (secreta.includes(palabra.charAt(i))) {
+                        if (palabra.charAt(i) === secreta.charAt(i)) {
+                            colores += "2"
+                        } else {
+                            colores += "1"
+                        }
+                    } else {
+                        colores += "0"
                     }
-                    else {
-                        console.log("hay una letra", palabra.charAt(i))
-                        colores += "1"
-                    }
-                }
-                else {
-                    console.log("no esta");
-                    colores += "0"
                 }
             }
+            intentos++
+            pintarResposta(palabra, colores)
+        } else {
+            alert("palabra de 5 letras pls")
         }
-        console.log(colores)
-        pintarResposta(palabra, colores)
+
     }
     else {
-        alert("palabra de 5 letras pls")
+        document.getElementById('enviar').disabled = true
+        alert("Te has quedado sin intentos. PERDEDOR")
     }
-
 }
+
 function pintarResposta(paraula, colores) {
-    console.log(paraula)
     let final = '<div class="resposta">\n'
     // document.getElementById('respostes').innerHTML += '<div class="resposta">\n' +
     //     '        <div class="slot">' + paraula.charAt(0) + '</div>\n' +
