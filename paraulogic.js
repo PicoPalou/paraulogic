@@ -1,5 +1,5 @@
 const secreta = 'RADIO'
-
+let resuelto = false
 /*
 Inicialitzam valors
  */
@@ -11,6 +11,7 @@ function analitzarParaula() {
     if (palabra.length === 5) {
         if (palabra === secreta) {
             document.getElementById('enviar').disabled=true
+            resuelto = true
         }
         else {
             for (let i = 0; i < palabra.length; i++) {
@@ -63,8 +64,8 @@ function pintarResposta(paraula, colores) {
     final += '</div>'
     document.getElementById('respostes').innerHTML += final
 }
-
-// addEventListener("DOMContentLoaded", (event) => {
-//     document.getElementById('pista').innerText='La paraula té '+ secreta.length + ' lletres'
-//     setTimeout(alert('La paraula té '+ secreta.length + ' lletres'),10000);
-// });
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && resuelto === false) {
+        analitzarParaula();
+    }
+});
