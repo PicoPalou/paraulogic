@@ -7,14 +7,15 @@
     <title>La paraula del dia</title>
     <script src="paraulogic.js"></script>
 </head>
-<body>
-<div class="title">
-La paraula del dia
+<body id="body">
+<div class="title" id="title">
+    <h2>La paraula del dia</h2>
+    <h1 id="texto"></h1>
 </div>
 
 <div class="title">
-    <input type="text" id="resposta" maxlength="5" onkeydown="return event.key !== ' ';">
-    <button type="submit" id="enviar" onclick="analitzarParaula()">Enviar</button>
+<!--    <input type="text" id="resposta" maxlength="5" onkeydown="return event.key !== ' ';">-->
+<!--    <button type="submit" id="enviar" onclick="analitzarParaula('asdf')">Enviar</button>-->
 </div>
 
 <div class="respostes" id="respostes"></div>
